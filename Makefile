@@ -20,7 +20,7 @@ NC = \033[0m # No Color
 
 # =============================== SOURCES ===================================== #
 
-SRCS = 	src/utils/ft_atoil.c \
+SRCS = 	src/utils/ft_atol.c \
 		src/utils/check_args.c \
 		src/main.c \
 
