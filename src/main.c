@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:34:28 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/10 16:14:48 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/13 17:40:28 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@ int	main(int argc, char **argv)
 	t_philo			philos[PHILOS_MAX];
 	pthread_mutex_t	forks[PHILOS_MAX];
 
+	program.dead_flag = 0;
 	if (!check_args(argc, argv))
 		return (printf(ERROR_ARGS), 1);
-	init
+	if (!init_forks(forks, ft_atoi(argv[1])))
+		return (printf(ERROR_INIT_FORKS), 1);
+	if (!init_program(&program, philos))
+		return (printf(ERROR_INIT_PROGRAM), 1);
+	init_philos(philos, &program, forks, argv);
+	thread_create(program, forks);
 	return (0);
 }

@@ -1,8 +1,8 @@
 # =============================== VARIABLES =================================== #
 
 NAME			= philo
-CC				= cc
-CFLAGS			= -Wall -Wextra -Werror
+CC				= gcc
+CFLAGS			= -g -pthread -Wall -Wextra -Werror
 RM				= rm -f
 
 # ================================ COULEURS =================================== #
@@ -22,6 +22,11 @@ NC = \033[0m # No Color
 
 SRCS = 	src/utils/ft_atol.c \
 		src/utils/check_args.c \
+		src/utils/gettime.c \
+		src/init/init.c \
+		src/run/routine.c \
+		src/run/thread_run.c \
+		src/run/observer.c \
 		src/main.c \
 
 OBJS = $(SRCS:.c=.o)

@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   gettime.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 16:11:38 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/10 16:35:19 by edetoh           ###   ########.fr       */
+/*   Created: 2025/01/13 12:14:34 by edetoh            #+#    #+#             */
+/*   Updated: 2025/01/13 12:14:48 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	init_forks(pthread_mutex_t *forks, int philo_num)
+unsigned int	get_current_time(void)
 {
-	int	i;
+	struct timeval	tv;
 
-	i = 0;
-	while (i < philo_num)
-	{
-		pthread_mutex_init(&forks[i], NULL);
-		i++;
-	}
-}
-
-void	init_program(t_program program, t_philo *philos)
-{
-	program.dead_flag = 0;
-	program.philos = philos;
-	pthread_mutex_init(&program.dead_lock, NULL);
-	pthread_mutex_init(&program.meal_lock, NULL);
-	pthread_mutex_init(&program.write_lock, NULL);
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
