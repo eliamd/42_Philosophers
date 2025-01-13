@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:20:56 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/13 19:10:44 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/13 23:58:22 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_philo
 	unsigned int	start_time;
 	int				num_of_philos;
 	int				num_times_to_eat;
-	bool			dead;
+	bool			*dead;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*write_lock;
@@ -74,6 +74,7 @@ int				init_forks(pthread_mutex_t *forks, int philo_num);
 void			init_philos(t_philo *philos, t_program *program, \
 pthread_mutex_t *forks, char **argv);
 
+bool			dead_check(t_philo *philo);
 //routine.c
 void			eat(t_philo *philo);
 void			sleeping(t_philo *philo);
@@ -85,5 +86,9 @@ void			*observer(void *arg);
 
 //thread_run.c
 int				thread_create(t_program program, pthread_mutex_t *forks);
+
+//cleanup.c
+void			cleanup_program(t_program *program, pthread_mutex_t *forks);
+void			destroy_mutexes(t_program *program, pthread_mutex_t *forks, int philo_num);
 
 #endif

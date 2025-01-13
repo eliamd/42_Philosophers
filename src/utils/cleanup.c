@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 15:34:28 by edetoh            #+#    #+#             */
+/*   Created: 2025/01/14 00:00:00 by edetoh            #+#    #+#             */
 /*   Updated: 2025/01/13 23:58:22 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../philosophers.h"
 
-int	main(int argc, char **argv)
+void	destroy_mutexes(t_program *program, pthread_mutex_t *forks, int philo_num)
 {
-	t_program		program;
-	t_philo			philos[PHILOS_MAX];
-	pthread_mutex_t	forks[PHILOS_MAX];
+	int	i;
 
-	program.dead_flag = 0;
-	if (!check_args(argc, argv))
-		return (printf(ERROR_ARGS), 1);
-	if (!init_forks(forks, ft_atoi(argv[1])))
-		return (printf(ERROR_INIT_FORKS), 1);
-	if (!init_program(&program, philos))
+	i = 0;
+	while (i < philo_num)
 	{
-		destroy_mutexes(&program, forks, ft_atoi(argv[1]));
-		return (printf(ERROR_INIT_PROGRAM), 1);
+		pthread_mutex_destroy(&forks[i]);
+		i++;
 	}
-	init_philos(philos, &program, forks, argv);
-	thread_create(program, forks);
-	cleanup_program(&program, forks);
-	return (0);
+	pthread_mutex_destroy(&program->meal_lock);
+	pthread_mutex_destroy(&program->dead_lock);
+	pthread_mutex_destroy(&program->write_lock);
+}
+
+void	cleanup_program(t_program *program, pthread_mutex_t *forks)
+{
+	destroy_mutexes(program, forks, program->philos[0].num_of_philos);
 }

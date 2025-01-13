@@ -1,8 +1,8 @@
 # =============================== VARIABLES =================================== #
 
 NAME			= philo
-CC				= gcc
-CFLAGS			= -g -pthread -Wall -Wextra -Werror
+CC				= cc
+CFLAGS			= -Wall -Wextra -Werror
 RM				= rm -f
 
 # ================================ COULEURS =================================== #
@@ -23,6 +23,7 @@ NC = \033[0m # No Color
 SRCS = 	src/utils/ft_atol.c \
 		src/utils/check_args.c \
 		src/utils/gettime.c \
+		src/utils/cleanup.c \
 		src/init/init.c \
 		src/run/routine.c \
 		src/run/thread_run.c \

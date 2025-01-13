@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 16:11:38 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/13 19:18:44 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/13 20:37:30 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	init_philos(t_philo *philos, t_program *program, pthread_mutex_t *forks,
 		philos[i].eating = 0;
 		philos[i].meals_eaten = 0;
 		init_input(&philos[i], argv);
-		printf("num of philos : %d\n", philos[i].num_of_philos);
 		philos[i].start_time = get_current_time();
 		philos[i].last_meal = get_current_time();
 		philos[i].write_lock = &program->write_lock;
@@ -68,13 +67,13 @@ int	init_forks(pthread_mutex_t *forks, int philo_num)
 
 int	init_program(t_program *program, t_philo *philos)
 {
-	(*program).dead_flag = false;
-	(*program).philos = philos;
-	if (pthread_mutex_init(&program[0].dead_lock, NULL) != 0)
+	program->dead_flag = false;
+	program->philos = philos;
+	if (pthread_mutex_init(&program->dead_lock, NULL) != 0)
 		return (0);
-	if (pthread_mutex_init(&program[0].meal_lock, NULL) != 0)
+	if (pthread_mutex_init(&program->meal_lock, NULL) != 0)
 		return (0);
-	if (pthread_mutex_init(&program[0].write_lock, NULL) != 0)
+	if (pthread_mutex_init(&program->write_lock, NULL) != 0)
 		return (0);
 	return (1);
 }
