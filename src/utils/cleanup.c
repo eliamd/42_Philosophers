@@ -6,13 +6,14 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 00:00:00 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/13 23:58:22 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/14 17:48:18 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	destroy_mutexes(t_program *program, pthread_mutex_t *forks, int philo_num)
+void	destroy_mutexes(t_program *program, pthread_mutex_t \
+*forks, int philo_num)
 {
 	int	i;
 

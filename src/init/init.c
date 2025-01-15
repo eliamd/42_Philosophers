@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 16:11:38 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/13 20:37:30 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/14 18:23:41 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ void	init_input(t_philo *philo, char **argv)
 void	init_philos(t_philo *philos, t_program *program, pthread_mutex_t *forks,
 		char **argv)
 {
-	int	i;
+	int				i;
+	unsigned int	start_time;
 
+	start_time = get_current_time();
 	i = 0;
 	while (i < ft_atoi(argv[1]))
 	{
@@ -36,8 +38,8 @@ void	init_philos(t_philo *philos, t_program *program, pthread_mutex_t *forks,
 		philos[i].eating = 0;
 		philos[i].meals_eaten = 0;
 		init_input(&philos[i], argv);
-		philos[i].start_time = get_current_time();
-		philos[i].last_meal = get_current_time();
+		philos[i].start_time = start_time;
+		philos[i].last_meal = start_time;
 		philos[i].write_lock = &program->write_lock;
 		philos[i].dead_lock = &program->dead_lock;
 		philos[i].meal_lock = &program->meal_lock;

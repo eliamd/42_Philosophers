@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:20:56 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/13 23:58:22 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/14 17:15:36 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int				ft_atoi(const char *nptr);
 
 //gettime.c
 unsigned int	get_current_time(void);
+int				ft_usleep(size_t milliseconds);
 
 //check_args.c
 bool			check_args(int argc, char **argv);
@@ -76,10 +77,10 @@ pthread_mutex_t *forks, char **argv);
 
 bool			dead_check(t_philo *philo);
 //routine.c
-void			eat(t_philo *philo);
-void			sleeping(t_philo *philo);
-void			thinking(t_philo *philo);
-void			take_forks(t_philo *philo);
+int				eat(t_philo *philo);
+int				sleeping(t_philo *philo);
+int				thinking(t_philo *philo);
+int				take_forks(t_philo *philo);
 
 //observer.c
 void			*observer(void *arg);
@@ -89,6 +90,7 @@ int				thread_create(t_program program, pthread_mutex_t *forks);
 
 //cleanup.c
 void			cleanup_program(t_program *program, pthread_mutex_t *forks);
-void			destroy_mutexes(t_program *program, pthread_mutex_t *forks, int philo_num);
+void			destroy_mutexes(t_program *program, \
+pthread_mutex_t *forks, int philo_num);
 
 #endif
