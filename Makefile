@@ -2,7 +2,7 @@
 
 NAME			= philo
 CC				= cc
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -g2
 RM				= rm -f
 
 # ================================ COULEURS =================================== #
@@ -26,6 +26,7 @@ SRCS = 	src/utils/ft_atol.c \
 		src/utils/cleanup.c \
 		src/init/init.c \
 		src/run/routine.c \
+		src/run/single_philo.c \
 		src/run/thread_run.c \
 		src/run/observer.c \
 		src/main.c \
@@ -50,7 +51,7 @@ endef
 all:		$(NAME)
 
 $(NAME): $(OBJS)
-			$(CC) $(OBJS) -o $(NAME)
+			$(CC) $(OBJS) -o $(NAME) -fsanitize=thread
 			@printf "$(BLUE)[100%%] $(GREEN)$(NAME) is compiled !! $(NC)\n"
 
 %.o: %.c

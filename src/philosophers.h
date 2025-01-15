@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:20:56 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/14 17:15:36 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/15 22:42:17 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,10 @@ void			init_philos(t_philo *philos, t_program *program, \
 pthread_mutex_t *forks, char **argv);
 
 bool			dead_check(t_philo *philo);
+void			single_philo(t_philo *philo);
+
 //routine.c
-int				eat(t_philo *philo);
-int				sleeping(t_philo *philo);
-int				thinking(t_philo *philo);
-int				take_forks(t_philo *philo);
+int				philo_routine(t_philo *philo);
 
 //observer.c
 void			*observer(void *arg);
@@ -90,7 +89,6 @@ int				thread_create(t_program program, pthread_mutex_t *forks);
 
 //cleanup.c
 void			cleanup_program(t_program *program, pthread_mutex_t *forks);
-void			destroy_mutexes(t_program *program, \
-pthread_mutex_t *forks, int philo_num);
+void			destroy_mutexes(t_program *program, pthread_mutex_t *forks);
 
 #endif

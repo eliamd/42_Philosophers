@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 12:14:34 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/14 18:15:42 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/15 22:40:42 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	ft_usleep(size_t milliseconds)
 
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds)
-		usleep(500);
+		usleep(100);
 	return (0);
 }

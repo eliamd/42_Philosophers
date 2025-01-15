@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup.c                                          :+:      :+:    :+:   */
+/*   single_philo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 00:00:00 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/15 21:26:28 by edetoh           ###   ########.fr       */
+/*   Created: 2025/01/15 21:32:08 by edetoh            #+#    #+#             */
+/*   Updated: 2025/01/15 21:32:54 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void	destroy_mutexes(t_program *program, pthread_mutex_t *forks)
+void	single_philo(t_philo *philo)
 {
-	int	i;
-
-	i = 0;
-	while (i < program->philos[0].num_of_philos)
-	{
-		pthread_mutex_destroy(&forks[i]);
-		i++;
-	}
-	pthread_mutex_destroy(&program->meal_lock);
-	pthread_mutex_destroy(&program->dead_lock);
-	pthread_mutex_destroy(&program->write_lock);
-}
-
-void	cleanup_program(t_program *program, pthread_mutex_t *forks)
-{
-	destroy_mutexes(program, forks);
+	printf("0 1 has taken a fork\n");
+	ft_usleep(philo->time_to_die);
+	printf("%u 1 died\n", philo->time_to_die);
 }
