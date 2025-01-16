@@ -20,16 +20,16 @@ NC = \033[0m # No Color
 
 # =============================== SOURCES ===================================== #
 
-SRCS = 	philo/utils/ft_atol.c \
-		philo/utils/check_args.c \
-		philo/utils/gettime.c \
-		philo/utils/cleanup.c \
-		philo/init/init.c \
-		philo/run/routine.c \
-		philo/run/single_philo.c \
-		philo/run/thread_run.c \
-		philo/run/observer.c \
-		philo/main.c \
+SRCS = 	src/utils/ft_atol.c \
+		src/utils/check_args.c \
+		src/utils/gettime.c \
+		src/utils/cleanup.c \
+		src/init/init.c \
+		src/run/routine.c \
+		src/run/single_philo.c \
+		src/run/thread_run.c \
+		src/run/observer.c \
+		src/main.c \
 
 OBJS = $(SRCS:.c=.o)
 
