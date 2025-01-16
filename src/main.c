@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:34:28 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/15 21:31:43 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/16 13:57:59 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	else
 	{
 		thread_create(program, forks);
-		cleanup_program(&program, forks);
+		destroy_mutexes(&program, forks);
 	}
 	return (0);
 }

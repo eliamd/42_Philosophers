@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:20:56 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/15 22:42:17 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/16 13:58:10 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void			*observer(void *arg);
 int				thread_create(t_program program, pthread_mutex_t *forks);
 
 //cleanup.c
-void			cleanup_program(t_program *program, pthread_mutex_t *forks);
 void			destroy_mutexes(t_program *program, pthread_mutex_t *forks);
 
 #endif

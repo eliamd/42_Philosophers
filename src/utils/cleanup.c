@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 00:00:00 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/15 21:26:28 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/16 13:58:03 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,4 @@ void	destroy_mutexes(t_program *program, pthread_mutex_t *forks)
 	pthread_mutex_destroy(&program->meal_lock);
 	pthread_mutex_destroy(&program->dead_lock);
 	pthread_mutex_destroy(&program->write_lock);
-}
-
-void	cleanup_program(t_program *program, pthread_mutex_t *forks)
-{
-	destroy_mutexes(program, forks);
 }

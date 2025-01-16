@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:32:08 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/15 22:41:49 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/16 14:02:31 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,22 @@ int	thread_create(t_program program, pthread_mutex_t *forks)
 	pthread_t		observer_thread;
 
 	if (pthread_create(&observer_thread, NULL, observer, program.philos) != 0)
-		return (cleanup_program(&program, forks), 1);
+		return (destroy_mutexes(&program, forks), 1);
 	i = 0;
 	while (i < program.philos[0].num_of_philos)
 	{
 		if (pthread_create(&program.philos[i].thread, NULL, \
 		routine, &program.philos[i]) != 0)
-			return (cleanup_program(&program, forks), 1);
+			return (destroy_mutexes(&program, forks), 1);
 		i++;
 	}
 	if (pthread_join(observer_thread, NULL) != 0)
-		return (cleanup_program(&program, forks), 1);
+		return (destroy_mutexes(&program, forks), 1);
 	i = 0;
 	while (i < program.philos[0].num_of_philos)
 	{
 		if (pthread_join(program.philos[i].thread, NULL) != 0)
-			return (cleanup_program(&program, forks), 1);
+			return (destroy_mutexes(&program, forks), 1);
 		i++;
 	}
 	return (0);
