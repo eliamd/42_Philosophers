@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 17:29:10 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/15 22:13:41 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/17 15:43:10 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	*observer(void *arg)
 	{
 		if (check_die(philo) || check_num_meals(philo))
 			break ;
-		usleep(100);
+		usleep(50);
 	}
 	return (NULL);
 }

@@ -2,7 +2,7 @@
 
 NAME			= philo
 CC				= cc
-CFLAGS			= -Wall -Wextra -Werror -g2
+CFLAGS			= -Wall -Wextra -Werror
 RM				= rm -f
 
 # ================================ COULEURS =================================== #
@@ -51,7 +51,7 @@ endef
 all:		$(NAME)
 
 $(NAME): $(OBJS)
-			$(CC) $(OBJS) -o $(NAME) -fsanitize=thread
+			$(CC) $(OBJS) -o $(NAME)
 			@printf "$(BLUE)[100%%] $(GREEN)$(NAME) is compiled !! $(NC)\n"
 
 %.o: %.c

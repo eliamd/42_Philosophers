@@ -6,7 +6,7 @@
 /*   By: edetoh <edetoh@student.42lehavre.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:32:08 by edetoh            #+#    #+#             */
-/*   Updated: 2025/01/16 14:02:31 by edetoh           ###   ########.fr       */
+/*   Updated: 2025/01/17 15:33:05 by edetoh           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*routine(void *arg)
 	while (!dead_check(philo))
 	{
 		if (philo_routine(philo))
-			break;
+			break ;
 	}
 	return (arg);
 }
