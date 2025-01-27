@@ -27,7 +27,7 @@ jobs:
     # Vérification de la norme
     - name: Check norm
       run: |
-        norminette src/
+        norminette philo/
 
     # Compilation du projet
     - name: Build project
